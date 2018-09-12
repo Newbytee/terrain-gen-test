@@ -53,22 +53,36 @@ function drawTerrain() {
     ctx.fillStyle = "#000FFF";
     ctx.fillRect(0, canvas.height - 20, canvas.width, canvas.height);
     for (let i = viewport; i < terrain.length + viewport; i++) {
-        ctx.fillStyle = "#00FF99";
+        ctx.fillStyle = "#077607";
         //console.log(i);
         //if (typeof terrain[i] === "undefined") '
         //generateTerrainPos(i);
         ctx.fillRect(2 * (i - viewport), canvas.height - 20 - terrain[i], 2, canvas.height);
+        for (let j = 0; j < entities.length; j++) {
+            if (entities[j].x === i) {
+                drawTree(i);
+            }
+        }
     }
 }
 
+function drawTree(treeX) {
+    ctx.fillStyle = "#8c2a06";
+    ctx.fillRect(2 * (treeX - viewport), canvas.height - 20 - terrain[treeX], 2, -20);
+    ctx.fillStyle = "#00FF00";
+    ctx.beginPath();
+    ctx.arc(2 * (treeX - viewport) + 1, canvas.height - 40 - terrain[treeX], 10, 0, 2 * Math.PI);
+    ctx.stroke();
+}
+
 function addEntity(createdType, xCoord) {
-    const entity = {type: createdType, x: xCoord};
-    entities.push(entity);
+    entities.push({type: createdType, x: xCoord});
 }
 
 document.addEventListener("keydown", function(event) {
     switch (event.code) {
         case "KeyR":
+            entities.length = 0;
             generateTerrain();
             break;
         case "ArrowLeft":
