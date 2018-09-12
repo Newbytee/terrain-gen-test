@@ -72,7 +72,7 @@ function drawTree(treeX) {
     ctx.fillStyle = "#00FF00";
     ctx.beginPath();
     ctx.arc(2 * (treeX - viewport) + 1, canvas.height - 40 - terrain[treeX], 10, 0, 2 * Math.PI);
-    ctx.stroke();
+    ctx.fill();
 }
 
 function addEntity(createdType, xCoord) {
