@@ -27,7 +27,6 @@ function generateTerrain() {
 
 function generateTerrainMore(nBlocks) {
     terrain.length = terrain.length + nBlocks;
-
     for (let i = 0; i < terrain.length; i++) {
         if (typeof terrain[i] === "undefined") {
             terrain[i] = generateTerrainPos(i);
@@ -46,9 +45,6 @@ function generateTerrainPos(pos) {
         } else {
             sign = 1;
         }
-        /*if (terrain[pos - 1] < -20) {
-            sign = 1;
-        }*/
         if (randomNumber < 0.1) {
             addEntity("tree", pos);
         } else if (randomNumber < 0.15) {
@@ -119,14 +115,14 @@ document.addEventListener("keydown", function(event) {
                 viewportX--;
             }
             if (typeof terrain[viewportX + 200] === "undefined") {
-                generateTerrainMore(viewportX);
+                generateTerrainMore(viewportX - terrain.length + 200);
             }
             break;
         case "ArrowRight":
             viewportX++;
             if (typeof terrain[viewportX + 200] === "undefined") {
-                generateTerrainMore(viewportX);
-            }
+                generateTerrainMore(viewportX - terrain.length + 200);
+}
             break;
         case "ArrowUp":
             viewportY++;
