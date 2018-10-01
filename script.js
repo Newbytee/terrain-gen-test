@@ -62,7 +62,10 @@ function drawTerrain() {
         //console.log(i);
         //if (typeof terrain[i] === "undefined") '
         //generateTerrainPos(i);
-        ctx.fillRect(2 * (i - viewportX), canvas.height - 20 - terrain[i] + viewportY, 2, canvas.height);
+        let tmpY = canvas.height - 20 - terrain[i] + viewportY;
+        if (tmpY < canvas.height) {
+            ctx.fillRect(2 * (i - viewportX), tmpY, 2, canvas.height - tmpY);
+        }
         for (let j = 0; j < entities.length; j++) {
             if (entities[j].x === i) {
                 if (terrain[i] > 0) {
