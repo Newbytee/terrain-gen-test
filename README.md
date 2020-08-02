@@ -1,6 +1,6 @@
 # "Terrain Generation Test"
 
-# Description
+## Description
 
 This is a "terrain generator" I created in September of 2018. It is very
  primitive.
