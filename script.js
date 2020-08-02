@@ -108,6 +108,8 @@ function addEntity(createdType, xCoord) {
 }
 
 document.addEventListener("keydown", function(event) {
+	const moveSpeed = event.shiftKey ? 4 : 1;
+
     switch (event.code) {
         case "KeyR":
             entities.length = 0;
@@ -115,23 +117,23 @@ document.addEventListener("keydown", function(event) {
             break;
         case "ArrowLeft":
             if (viewportX > 0) {
-                viewportX--;
+                viewportX -= moveSpeed;
             }
             if (typeof terrain[viewportX + 200] === "undefined") {
                 generateTerrainMore(viewportX - terrain.length + 200);
             }
             break;
         case "ArrowRight":
-            viewportX++;
+            viewportX += moveSpeed;
             if (typeof terrain[viewportX + 200] === "undefined") {
                 generateTerrainMore(viewportX - terrain.length + 200);
 }
             break;
         case "ArrowUp":
-            viewportY++;
+            viewportY += moveSpeed;
             break;
         case "ArrowDown":
-            viewportY--;
+            viewportY -= moveSpeed;
             break;
     }
 });
