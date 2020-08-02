@@ -2,7 +2,7 @@
 
 # Description
 
-This is a "terrain generator" I created in September of 2018. Is is very
+This is a "terrain generator" I created in September of 2018. It is very
  primitive.
 
 You can view it here: https://newbytee.github.io/terrain-gen-test/
